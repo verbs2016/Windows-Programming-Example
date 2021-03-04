@@ -1,14 +1,17 @@
 // WinsockBlockingTcpClient.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include <tchar.h>
+#include <stdio.h>
+
+// #include <Windows.h>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 
 #pragma comment(lib, "ws2_32.lib")
 
 const int g_buff_len = 1024;
-const u_short port = 1111;
+const u_short port = 5556;
 
 BOOL InitWinsockLib();
 void DeInitWinsockLib();

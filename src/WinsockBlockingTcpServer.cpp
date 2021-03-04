@@ -1,7 +1,10 @@
 // WinsockBlockingTcpServer.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include <tchar.h>
+#include <stdio.h>
+
+// #include <Windows.h>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 
@@ -42,7 +45,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	// 打印出客户端的地址
 	if (NULL == inet_ntop(AF_INET, &server_addr.sin_addr, ipv4_str, g_ipv4_len)) {
-		printf("%s: inet_ntop failed with error = %s\n", __FUNCTION__, WSAGetLastError());
+		printf("%s: inet_ntop failed with error = %d\n", __FUNCTION__, WSAGetLastError());
 		goto Cleanup;
 	}
 	printf("server listen ip = %s:%d\n", ipv4_str, ntohs(server_addr.sin_port));
@@ -63,7 +66,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	ZeroMemory(ipv4_str, g_ipv4_len);
 	// 打印出客户端的地址
 	if (NULL == inet_ntop(AF_INET, &client_addr.sin_addr, ipv4_str, g_ipv4_len)) {
-		printf("%s: inet_ntop failed with error = %s\n", __FUNCTION__, WSAGetLastError());
+		printf("%s: inet_ntop failed with error = %d\n", __FUNCTION__, WSAGetLastError());
 		goto Cleanup;
 	}
 	printf("Accept a client ip = %s:%d\n", ipv4_str, ntohs(client_addr.sin_port));
